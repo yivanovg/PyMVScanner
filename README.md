@@ -17,7 +17,7 @@ The manual way
 
 ```
 git clone https://github.com/yivanovg/PyMVScanner
-cd PyVMScanner
+cd PyMVScanner
 pip install -r PyMVScanner/requirements.txt
 ```
 ## Features
