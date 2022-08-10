@@ -1,10 +1,10 @@
 # PYTHON WEB APPLICATION VULNERABILITY SCANNER
 
-PYVMSCANNER IS A WEB BASED PYTHON VULNERABILITY SCANNER CAPABLE OF DISCOVERING VULNERABILITIES AND CARRYING OUT A NUMBER OF DIFFERENT SCANS
+PYVMSCANNER is a web based python vulnerability scanner capable of discovering vulnerabilities and carrying out a number of different scans.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install PYVMSCANNER.
 
 ```bash
 pip install foobar
