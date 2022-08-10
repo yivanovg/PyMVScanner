@@ -7,9 +7,6 @@
   <a href="https://github.com/yivanovg/PyMVScanner/blob/master/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-yellow.svg" target="_blank" />
   </a>
-  <a href="https://codecov.io/gh/kefranabg/readme-md-generator">
-    <img src="https://codecov.io/gh/kefranabg/readme-md-generator/branch/master/graph/badge.svg" />
-  </a>
   <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/requests">
   </p>
 PYVMSCANNER is a web based python vulnerability scanner capable of discovering vulnerabilities and carrying out a number of different scans.
