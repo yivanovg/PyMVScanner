@@ -1,0 +1,260 @@
+
+{
+  "domain_name": "flagman.bg (flagman.bg)",
+  "status": "busy, active",
+  "expiration_date": null
+}\n
+{
+  "domain_name": "hackthissite.org",
+  "registrar": "ENOM, INC.",
+  "whois_server": "WHOIS.ENOM.COM",
+  "referral_url": null,
+  "updated_date": [
+    "2022-07-17 06:46:49",
+    "2022-07-17 06:46:49.650000"
+  ],
+  "creation_date": "2003-08-10 15:01:25",
+  "expiration_date": [
+    "2023-08-10 15:01:25",
+    "2023-08-10 15:01:00"
+  ],
+  "name_servers": [
+    "c.ns.buddyns.com",
+    "f.ns.buddyns.com",
+    "g.ns.buddyns.com",
+    "h.ns.buddyns.com",
+    "j.ns.buddyns.com",
+    "C.NS.BUDDYNS.COM",
+    "F.NS.BUDDYNS.COM",
+    "G.NS.BUDDYNS.COM",
+    "H.NS.BUDDYNS.COM",
+    "J.NS.BUDDYNS.COM"
+  ],
+  "status": [
+    "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+    "clientTransferProhibited https://www.icann.org/epp#clientTransferProhibited"
+  ],
+  "emails": [
+    "abuse@enom.com",
+    "bnstfskxxt@whoisprivacyprotect.com",
+    "ABUSE@ENOM.COM"
+  ],
+  "dnssec": "unsigned",
+  "name": [
+    "REDACTED FOR PRIVACY",
+    "Whois Agent (446821033)"
+  ],
+  "org": [
+    "Data Protected",
+    "Whois Privacy Protection Service, Inc."
+  ],
+  "address": [
+    "REDACTED FOR PRIVACY",
+    "PO Box 639",
+    "C/O hackthissite.org"
+  ],
+  "city": [
+    "REDACTED FOR PRIVACY",
+    "Kirkland"
+  ],
+  "state": "WA",
+  "registrant_postal_code": [
+    "REDACTED FOR PRIVACY",
+    "98083"
+  ],
+  "country": "US"
+}
+{
+  "domain_name": null,
+  "registrar": null,
+  "whois_server": null,
+  "referral_url": null,
+  "updated_date": null,
+  "creation_date": null,
+  "expiration_date": null,
+  "name_servers": null,
+  "status": null,
+  "emails": null,
+  "dnssec": null,
+  "name": null,
+  "org": null,
+  "address": null,
+  "city": null,
+  "state": null,
+  "registrant_postal_code": null,
+  "country": null
+}\n
+{
+  "domain_name": [
+    "MYLOCALAPP.COM",
+    "MyLocalApp.com"
+  ],
+  "registrar": "TurnCommerce, Inc. DBA NameBright.com",
+  "whois_server": "whois.NameBright.com",
+  "referral_url": null,
+  "updated_date": [
+    "2021-08-29 00:59:29",
+    "2020-10-09 00:00:00"
+  ],
+  "creation_date": "2011-10-15 18:06:43",
+  "expiration_date": [
+    "2023-10-15 18:06:43",
+    "2023-10-15 00:00:00"
+  ],
+  "name_servers": [
+    "NSG1.NAMEBRIGHTDNS.COM",
+    "NSG2.NAMEBRIGHTDNS.COM",
+    "nsg1.namebrightdns.com",
+    "nsg2.namebrightdns.com"
+  ],
+  "status": [
+    "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+    "clientTransferProhibited https://www.icann.org/epp#clientTransferProhibited"
+  ],
+  "emails": [
+    "support@namebright.com",
+    "abuse@NameBright.com",
+    "domains@hugedomains.com"
+  ],
+  "dnssec": "unsigned",
+  "name": "Domain Admin / This Domain is For Sale",
+  "org": "HugeDomains.com",
+  "address": "2635 Walnut Street",
+  "city": "Denver",
+  "state": "CO",
+  "registrant_postal_code": "80205",
+  "country": "US"
+}\n
+{
+  "domain_name": "flagman.bg (flagman.bg)",
+  "status": "busy, active",
+  "expiration_date": null
+}\n
+{
+  "domain_name": "abv.bg (abv.bg)",
+  "status": "busy, active",
+  "expiration_date": null
+}\n
+{
+  "domain_name": "python.org",
+  "registrar": "GANDI SAS",
+  "whois_server": "whois.gandi.net",
+  "referral_url": null,
+  "updated_date": "2022-06-03 14:20:21",
+  "creation_date": [
+    "1995-03-27 05:00:00",
+    "1995-03-27 03:00:00"
+  ],
+  "expiration_date": "2023-03-28 05:00:00",
+  "name_servers": [
+    "ns-1134.awsdns-13.org",
+    "ns-2046.awsdns-63.co.uk",
+    "ns-484.awsdns-60.com",
+    "ns-981.awsdns-58.net",
+    "NS-2046.AWSDNS-63.CO.UK",
+    "NS-484.AWSDNS-60.COM",
+    "NS-1134.AWSDNS-13.ORG",
+    "NS-981.AWSDNS-58.NET"
+  ],
+  "status": [
+    "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+    "clientTransferProhibited http://www.icann.org/epp#clientTransferProhibited"
+  ],
+  "emails": [
+    "abuse@support.gandi.net",
+    "e89d6901ba3e470e8cedc3eaa32a0074-1697561@contact.gandi.net",
+    "7fd79ebe18980da9baceef0fa1b27680-1705778@contact.gandi.net"
+  ],
+  "dnssec": [
+    "unsigned",
+    "Unsigned"
+  ],
+  "name": "REDACTED FOR PRIVACY",
+  "org": "Python Software Foundation",
+  "address": "REDACTED FOR PRIVACY",
+  "city": "REDACTED FOR PRIVACY",
+  "state": [
+    "OR",
+    "Oregon"
+  ],
+  "registrant_postal_code": "REDACTED FOR PRIVACY",
+  "country": "US"
+}\n
+{
+  "domain_name": "python.org",
+  "registrar": "GANDI SAS",
+  "whois_server": "whois.gandi.net",
+  "referral_url": null,
+  "updated_date": "2022-06-03 14:20:21",
+  "creation_date": [
+    "1995-03-27 05:00:00",
+    "1995-03-27 03:00:00"
+  ],
+  "expiration_date": "2023-03-28 05:00:00",
+  "name_servers": [
+    "ns-1134.awsdns-13.org",
+    "ns-2046.awsdns-63.co.uk",
+    "ns-484.awsdns-60.com",
+    "ns-981.awsdns-58.net",
+    "NS-2046.AWSDNS-63.CO.UK",
+    "NS-484.AWSDNS-60.COM",
+    "NS-1134.AWSDNS-13.ORG",
+    "NS-981.AWSDNS-58.NET"
+  ],
+  "status": [
+    "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+    "clientTransferProhibited http://www.icann.org/epp#clientTransferProhibited"
+  ],
+  "emails": [
+    "abuse@support.gandi.net",
+    "e89d6901ba3e470e8cedc3eaa32a0074-1697561@contact.gandi.net",
+    "7fd79ebe18980da9baceef0fa1b27680-1705778@contact.gandi.net"
+  ],
+  "dnssec": [
+    "unsigned",
+    "Unsigned"
+  ],
+  "name": "REDACTED FOR PRIVACY",
+  "org": "Python Software Foundation",
+  "address": "REDACTED FOR PRIVACY",
+  "city": "REDACTED FOR PRIVACY",
+  "state": [
+    "OR",
+    "Oregon"
+  ],
+  "registrant_postal_code": "REDACTED FOR PRIVACY",
+  "country": "US"
+}\n
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+[]
+
+("\nTarget host 127.0.0.1 with IP ['127.0.0.1']  is open to connect on: ", 443)
+
+("\nTarget host 127.0.0.1 with IP ['127.0.0.1']  is open to connect on: ", 445)

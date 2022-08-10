@@ -1,0 +1,48 @@
+
+['\n09-Aug-2022 (04:58:32)', 'PVMSCANNER SQL URL: http://testphp.vulnweb.com/artists.php']No SQL Vulnerabilities['\n09-Aug-2022 (04:59:01)', 'PVMSCANNER SQL URL: http://testphp.vulnweb.com/artists.php']
+No SQL Vulnerabilities
+['\n09-Aug-2022 (04:59:39)', 'PVMSCANNER SQL URL: http://testphp.vulnweb.com/artists.php']
+No SQL Vulnerabilities
+
+09-Aug-2022 (05:00:10)PVMSCANNER SQL URL: http://testphp.vulnweb.com/artists.php
+No SQL Vulnerabilities
+
+09-Aug-2022 (05:00:27) PVMSCANNER SQL URL: http://testphp.vulnweb.com/artists.php
+No SQL Vulnerabilities
+
+09-Aug-2022 (05:08:50) PVMSCANNER SQL URL: http://127.0.0.1/DVWA-Master/vulnerabilities/sqli
+No SQL Vulnerabilities
+
+09-Aug-2022 (05:09:19) PVMSCANNER SQL URL: http://127.0.0.1/DVWA-Master/vulnerabilities/sqli
+No SQL Vulnerabilities
+
+09-Aug-2022 (05:09:25) PVMSCANNER SQL URL: http://127.0.0.1/DVWA-Master/vulnerabilities/sqli
+No SQL Vulnerabilities
+
+09-Aug-2022 (05:10:23) PVMSCANNER SQL URL: http://127.0.0.1/DVWA-Master/vulnerabilities/sqli
+No SQL Vulnerabilities
+['\n09-Aug-2022 (05:11:55)'
+ 'PVMSCANNER SQL URL: http://127.0.0.1/DVWA-Master/vulnerabilities/sqli'
+ 'PVMCSCANNER: SQL Injection vulnerability detected: SQL Injection (DMBS: MariaDB) (Payload: {\'id\': "\'"
+ \'Submit\': \'Submit\'})'
+ "Form: {'action': '#'
+ 'method': 'get'
+ 'inputs': [{'type': 'text'
+ 'name': 'id'
+ 'value': ''}
+ {'type': 'submit'
+ 'name': 'Submit'
+ 'value': 'Submit'}]}"]
+
+['09-Aug-2022 (05:12:26)'
+ 'PVMSCANNER SQL URL: http://127.0.0.1/DVWA-Master/vulnerabilities/sqli'
+ 'PVMCSCANNER: SQL Injection vulnerability detected: SQL Injection (DMBS: MariaDB) (Payload: {\'id\': "\'"
+ \'Submit\': \'Submit\'})'
+ "Form: {'action': '#'
+ 'method': 'get'
+ 'inputs': [{'type': 'text'
+ 'name': 'id'
+ 'value': ''}
+ {'type': 'submit'
+ 'name': 'Submit'
+ 'value': 'Submit'}]}"]

@@ -1,0 +1,6 @@
+The IP address of the www.google.com is: 216.58.212.228
+The IP address of the www.youtube.com is: 216.58.213.14
+The IP address of the www.facebook.com is: 157.240.225.35
+The IP address of the www.bbc.co.uk is: 212.58.233.254
+The IP address of the www.stackoverflow.com is: 151.101.193.69
+The IP address of the www.hackthissite.org is: 137.74.187.102

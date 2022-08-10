@@ -1,0 +1,86 @@
+
+06-Aug-2022 (18:28:41)
+Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/
+Code 200 Request OK!
+
+
+
+06-Aug-2022 (18:28:41)
+Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php
+Code 200 Request OK!
+
+
+
+09-Aug-2022 (03:11:41)
+[None, None]
+
+
+09-Aug-2022 (03:12:01)
+[None, None]
+
+
+09-Aug-2022 (03:12:48)
+['Possible Vulnerable Admin URL: {site_url}\nCode {url_request.status_code} Request OK!\n', 'Possible Vulnerable Admin URL: {site_url}\nCode {url_request.status_code} Request OK!\n']
+
+
+09-Aug-2022 (03:12:54)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/\nCode 200 Request OK!\n', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php\nCode 200 Request OK!\n']
+
+
+09-Aug-2022 (03:13:35)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/\nCode 200 Request OK!', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php\nCode 200 Request OK!']
+
+
+09-Aug-2022 (03:13:58)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/\nCode 200 Request OK!', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php\nCode 200 Request OK!']
+
+09-Aug-2022 (03:14:34)
+09-Aug-2022 (03:15:44)
+09-Aug-2022 (03:16:22)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/
+Code 200 Request OK!', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php
+Code 200 Request OK!']
+
+09-Aug-2022 (03:16:56)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/
+Code 200 Request OK!
+', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php
+Code 200 Request OK!
+']
+
+09-Aug-2022 (03:17:43)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/\nCode 200 Request OK!\n', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php\nCode 200 Request OK!\n']
+
+09-Aug-2022 (03:19:32)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/
+Code 200 Request OK!
+', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php
+Code 200 Request OK!
+']
+
+09-Aug-2022 (03:19:53)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/
+Code 200 Request OK!
+', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php
+Code 200 Request OK!
+']
+
+09-Aug-2022 (03:20:23)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/ Code 200 Request OK!
+', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php Code 200 Request OK!
+']
+
+09-Aug-2022 (03:33:23)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/ : Code 200 Request OK!
+', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php : Code 200 Request OK!
+']
+
+09-Aug-2022 (03:34:29)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/ : Code 200 Request OK!
+', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php : Code 200 Request OK!
+']
+
+09-Aug-2022 (03:35:05)
+['Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/config/ : Code 200 Request OK!
+', 'Possible Vulnerable Admin URL: http://127.0.0.1/DVWA-Master/login.php : Code 200 Request OK!
+']
