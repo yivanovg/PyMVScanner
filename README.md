@@ -14,7 +14,7 @@ PYVMSCANNER is a web based python vulnerability scanner capable of discovering v
 
 ## Installation
 
-DONT FORGET VIRTUAL ENVIRONMNET !!!
+Do not forget to activate your virtual enivronment first !!!
 
 ```python
 python3 -m venv /path/to/new/virtual/environment
@@ -29,6 +29,7 @@ The manual way:
 git clone https://github.com/yivanovg/PyMVScanner
 cd PyMVScanner
 pip install -r PyMVScanner/requirements.txt
+PyMVScanner.py --help
 ```
 Or download the project as a zip and extract it on your local machine and then:
 
@@ -36,6 +37,7 @@ Or download the project as a zip and extract it on your local machine and then:
 Open CMD Admin
 cd PyMVScanner
 pip install -r PyMVScanner/requirements.txt
+PyMVScanner.py --help
 ```
 
 ## Features
@@ -74,7 +76,11 @@ pip install -r PyMVScanner/requirements.txt
   </li>
   
 ## Usage
- 
+Below is an image  of the program CLI and the Help Menu.
+
+```python
+PyMVScanner.py --help
+```
 <img width="1000" src="https://github.com/yivanovg/PyMVScanner/blob/master/data/scannerDemo.PNG" alt="cli output"/>
  
 ```python
