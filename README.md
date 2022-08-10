@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to readme-md-generator 👋</h1>
+<h1 align="center">Welcome to PyVMScanner 👋</h1>
 <p align="center">
   <img src="https://img.shields.io/npm/v/readme-md-generator.svg?orange=blue" />
   <a href="https://www.npmjs.com/package/readme-md-generator">
@@ -17,7 +17,6 @@
     <img alt="Twitter: FranckAbgrall" src="https://img.shields.io/twitter/follow/FranckAbgrall.svg?style=social" target="_blank" />
   </a>
 </p>
-# PYTHON WEB APPLICATION VULNERABILITY SCANNER
 
 PYVMSCANNER is a web based python vulnerability scanner capable of discovering vulnerabilities and carrying out a number of different scans.
 
