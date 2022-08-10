@@ -13,6 +13,15 @@ PYVMSCANNER is a web based python vulnerability scanner capable of discovering v
 
 ## Installation
 
+DONT FORGET VIRTUAL ENVIRONMNET !!!
+
+```python
+python3 -m venv /path/to/new/virtual/environment
+In Admin CMD
+/path/to/new/virtual/environment/Scripts/activate.bat
+```
+And then proceed with install as normal when virtual-env is loaded.
+
 The manual way:
 
 ```
@@ -27,7 +36,6 @@ Open CMD Admin
 cd PyMVScanner
 pip install -r PyMVScanner/requirements.txt
 ```
-
 
 ## Features
 
