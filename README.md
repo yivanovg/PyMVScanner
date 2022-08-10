@@ -65,24 +65,17 @@ pip install -r PyMVScanner/requirements.txt
   </li>
   
 ## Usage
-
+ 
+<img width="1000" src="https://github.com/yivanovg/PyMVScanner/blob/master/data/scannerDemo.PNG" alt="cli output"/>
+ 
 ```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
+PyMVScanner.py --help
+PyMVScanner.py --portscan --url www.hackthissite.org --ports 20-500 --fsave False
+PyMVScanner.py sqlscan --url www.hackthissite.org --fsave True
 ```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/) PyMVScanner is built for authorized use only!!!
