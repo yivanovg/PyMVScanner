@@ -21,7 +21,36 @@ pip install foobar
 ## Features
 
   <li>
-    SQL Scan
+    SQL Scanner Error Based
+  </li>
+  <li>
+    HTTP Security Header Check
+  </li>
+  <li>
+    Cookies Security Flags Check
+  </li>
+  <li>
+    SSL Redirect Check
+  </li><li>
+    SLL Support Check
+  </li>
+  <li>
+    Admin Panel Finder
+  </li>
+  <li>
+    Directory and FIle Discovery
+  </li>
+  <li>
+    Host Lookup Via WHOIS and IPWHOIS
+  </li>
+  <li>
+    URL TO IP Change
+  </li>
+  <li>
+    IP TO URL Change
+  </li>
+  <li>
+    PORT SCAN: [TCP] [TCP STEALTH] [UDP] [FIN]
   </li>
   
 ## Usage
