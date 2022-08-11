@@ -4317,3 +4317,77 @@
  "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 105['TCP', '105', 'Mailbox Name Nameserver']
  "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 443['TCP', '443', 'HTTP protocol over TLS/SSL']
  "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 445['TCP', '445', 'Microsoft-DS']\n"]
+
+11-Aug-2022 (03:06:22)
+["Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 106['TCP', '106', '3COM-TSMUX']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 105['TCP', '105', 'Mailbox Name Nameserver']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 135['TCP', '135', 'DCE endpoint resolution']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 110['TCP', '110', 'Post Office Protocol - Version 3']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 80['TCP', '80', 'World Wide Web HTTP']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 143['TCP', '143', 'Internet Message Access Protocol']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 445['TCP', '445', 'Microsoft-DS']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 443['TCP', '443', 'HTTP protocol over TLS/SSL']\n"]
+
+11-Aug-2022 (05:37:09)
+["Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 106['TCP', '106', '3COM-TSMUX']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 143['TCP', '143', 'Internet Message Access Protocol']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 105['TCP', '105', 'Mailbox Name Nameserver']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 110['TCP', '110', 'Post Office Protocol - Version 3']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 80['TCP', '80', 'World Wide Web HTTP']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 135['TCP', '135', 'DCE endpoint resolution']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 443['TCP', '443', 'HTTP protocol over TLS/SSL']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 445['TCP', '445', 'Microsoft-DS']\n"]
+
+11-Aug-2022 (06:20:25)
+["Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 110['TCP', '110', 'Post Office Protocol - Version 3']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 80['TCP', '80', 'World Wide Web HTTP']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 105['TCP', '105', 'Mailbox Name Nameserver']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 106['TCP', '106', '3COM-TSMUX']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 135['TCP', '135', 'DCE endpoint resolution']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 143['TCP', '143', 'Internet Message Access Protocol']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 445['TCP', '445', 'Microsoft-DS']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 443['TCP', '443', 'HTTP protocol over TLS/SSL']\n"]
+
+11-Aug-2022 (06:22:05)
+["Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 80['TCP', '80', 'World Wide Web HTTP']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 110['TCP', '110', 'Post Office Protocol - Version 3']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 105['TCP', '105', 'Mailbox Name Nameserver']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 106['TCP', '106', '3COM-TSMUX']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 135['TCP', '135', 'DCE endpoint resolution']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 143['TCP', '143', 'Internet Message Access Protocol']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 445['TCP', '445', 'Microsoft-DS']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 443['TCP', '443', 'HTTP protocol over TLS/SSL']\n"]
+
+11-Aug-2022 (06:31:01)
+["Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 80['TCP', '80', 'World Wide Web HTTP']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 105['TCP', '105', 'Mailbox Name Nameserver']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 106['TCP', '106', '3COM-TSMUX']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 110['TCP', '110', 'Post Office Protocol - Version 3']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 135['TCP', '135', 'DCE endpoint resolution']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 143['TCP', '143', 'Internet Message Access Protocol']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 445['TCP', '445', 'Microsoft-DS']
+ "Target host 127.0.0.1 with IP ['127.0.0.1'] is open to connect on: 443['TCP', '443', 'HTTP protocol over TLS/SSL']\n"]
+
+11-Aug-2022 (06:38:35)
+[]
+
+11-Aug-2022 (06:38:36)
+[]
+
+11-Aug-2022 (06:38:36)
+[]
+
+11-Aug-2022 (06:38:37)
+[]
+
+11-Aug-2022 (06:38:37)
+[]
+
+11-Aug-2022 (06:39:16)
+['Open', 'Open']
+
+11-Aug-2022 (06:41:55)
+[('Open port: ', 79, '\n'), ('Open port: ', 80, '\n')]
+
+11-Aug-2022 (06:43:01)
+[('Open port: ', '79\n'), ('Open port: ', '80\n')]

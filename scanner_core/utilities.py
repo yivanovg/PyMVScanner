@@ -2,6 +2,7 @@
 """City Unviersity Project"""
 #imports
 import csv
+import os
 import socket
 import logging
 import re
@@ -116,4 +117,29 @@ def readWordlist(wordlist):
         
                 myLogger.info('Could not open/read file!!!') 
                 exit(e)
+                
+#check if the host is online  
+def checkHostOnlien(url):
     
+    myLogger.info('Starting Host Ping!')
+    #ip verificaiton
+    assert isinstance(url, str), \
+        "IP Address or Hostname should be in str format"
+
+    #ping using the windows cmd ping command
+    try:
+        
+        if os.system("ping -c 1 " + url + '\n') == 0:
+        
+            online = True
+        else:
+
+            online = False
+            
+    except OSError:
+        
+        myLogger.warning('OS Error Try Again !') 
+       
+    myLogger.info('Finished Host Ping Success!') 
+    
+    return online

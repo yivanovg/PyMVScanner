@@ -27,19 +27,19 @@ portQueue = Queue()
 lockPrint = Lock()
 
 host = ''
-
+timeout = 0.5
 online = True
 filesave = False
 fileList = list()
 
 def appendtofile(data):
+    
     global fileList
     print('true')
     fileList.append(data)
     
 #check if port is open using standart TCP connection 
-def check_port(port, timeout=0.5):
-    startTime = time.time()
+def check_port(port):
     
     global online
     global fileList
@@ -49,7 +49,7 @@ def check_port(port, timeout=0.5):
     
     #try to connect to the specified port with timeout
     try:
-        sock.settimeout(0.5)
+        sock.settimeout(timeout)
        
         sock.connect((host, port))
        
@@ -64,9 +64,6 @@ def check_port(port, timeout=0.5):
          
          return 
         
-    sock.close() 
-    #print('Time taken:', time.time() - startTime)
-
 
 #threading funciton which calls the port scan function
 def multiThread():
@@ -96,15 +93,13 @@ def multiThread():
         #except:
             
             #myLogger.critical('Aborting Scan Please Try Again!')
-            #cliParser.cli()
+            #exit()
 
 #start threding
-def run_multi_scan(threads, ports, timeout):
+def run_multi_scan(threads, ports):
 
     global filesave
     global portQueue
-    
-    dict_to_pass = {'timeout':timeout}
     
     #start threading with the number of specified threads
     try:
@@ -124,7 +119,7 @@ def run_multi_scan(threads, ports, timeout):
     except:
         
         myLogger.critical('Aborting Scan Please Try Again!')
-        cliParser.cli()
+        exit()
         
     #save file
     if filesave == True:
@@ -136,68 +131,51 @@ def run_multi_scan(threads, ports, timeout):
         
         myLogger.info('No Ports Open')
 
-#check if the host is online
-def checkHostOnline(hostname, waittime=600):
-    
-    myLogger.info('Starting Host Ping!')
-    #ip verificaiton
-    assert isinstance(hostname, str), \
-        "IP Address or Hostname should be in str format"
-
-    #ping using the windows cmd ping command
-    try:
-        
-        if os.system("ping -c 1 " + hostname + '\n') == 0:
-        
-            online = True
-        else:
-
-            online = False
-            
-    except OSError:
-        
-        myLogger.warning('OS Error Try Again !') 
-        cliParser.cli()
-       
-    myLogger.info('Finished Host Ping Success!') 
-    
-    return online
     
 #stealthy tcp scan explained in documenatation
-def stealthTCPScan(url):
+def stealthTCPScan(url, portPass):
     
     #var init
     dst_ip = url
     src_port = RandShort()
-    ports= (80,1)
+    ports= portPass
 
     #loop through the port range
     for dst_port in ports:
+        
         stealth_scan_resp = sr1(IP(dst=dst_ip)/TCP(sport=src_port,dport=dst_port,flags='S'),timeout=3)
         
         #checking the repsonse code and determenig the port status
         if str(type(stealth_scan_resp)) == "<class 'NoneType'>":
             
-                print('Filtered')
-            
+                print('Filtered port:', dst_port,'\n')
+                temps= 'Filtered port: ', dst_port
+                fileList.append(temps)
+                
         elif stealth_scan_resp.haslayer(TCP):
             
             if stealth_scan_resp.getlayer(TCP).flags == 0x12:
                 
                 send_rst = sr(IP(dst=dst_ip)/TCP(sport=src_port,dport=dst_port,flags='R'), timeout=3)
                 
-                print('Open')
+                print('Open port: ', dst_port,'\n')
+                temps1= 'Open port: ', dst_port
+                fileList.append(temps1)
                 
         elif stealth_scan_resp.getlayer(TCP).flags == 0x14:
             
-                print('Closed')
-            
+                print('Closed port: ', dst_port,'\n')
+                temps2= 'Closed port: ', dst_port
+                fileList.append(temps2)
+                
         elif stealth_scan_resp.haslayer(ICMP):
             
             if(int(stealth_scan_resp.getlayer(ICMP).type)==3 and int(stealth_scan_resp.getlayer(ICMP).code) in [1,2,3,9,10,13]):
             
-                print('Filtered')
-
+                print('Filtered port: ', dst_port, '\n')
+                temps3= 'Filtered port: ', dst_port
+                fileList.append(temps3)
+              
 #function for saving a file
 def saveFile():
     
@@ -242,21 +220,22 @@ def displayPortService(serviceNumber):
 
 
 #entry funciton for the port scan function
-def portSettings(url, portRanges, filesavePass, timeout=0.4, threads=200):
+def portSettings(url, portRanges, filesavePass=False, timeout_pass=0.5, threads=200, scan='TCP'):
 
     #var init
     global host
     host = url
-    
+    global timeout
     global filesave
     
     filesave = filesavePass
     
     myLogger.info(url+'\n')
     myLogger.info('Scan Starting!')
-    
+    timeout = timeout_pass
     #string format
     
+    #split port ranges
     if '-' in portRanges:
         portStart, portEnd = portRanges.split("-")
         portStart, portEnd = int(portStart), int(portEnd)
@@ -270,33 +249,23 @@ def portSettings(url, portRanges, filesavePass, timeout=0.4, threads=200):
         elif portStart < 0 and portStart > 65536 and portEnd < 1 and portEnd > 65536 :
 
             myLogger.warning('Port Range Invalid !')
-            cliParser.cli()
-    
-    #portsL = int(portRanges)
-       
-    
-    #stealthTCPScan()
+            exit()
     
     #validation of arguments
     if threads < 10 or threads > 250:
 
         myLogger.warning('Threads number should be between 10 and 250')
-        cliParser.cli()
+        exit()
         
     if timeout > 1 or timeout < 0.3:
         
         myLogger.warning('Timeout should be between 0.3 and 1 seconds')
-        cliParser.cli()
+        exit()
         
-    
-        
-    #run scan   
-    #if checkHostOnline('127.0.0.1')== True:
-        
-    run_multi_scan(threads,portsL,timeout)  
-        
-    #else:
-        
-    #myLogger.info('Host is down please try again or try another host!')
-        
-    #displayPortService()
+    if scan == 'TCP':
+     run_multi_scan(threads,portsL) 
+      
+    elif scan == 'TCP STEALTH':
+        stealthTCPScan(url,portsL)
+        if filesave == True:
+            saveFile()

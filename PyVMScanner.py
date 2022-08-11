@@ -18,7 +18,7 @@ if __name__ == '__main__':
     #crawlerURLs.start_crawl('http://127.0.0.1', 1)
     #headers_check.check_headers('
     # http://127.0.0.1/DVWA-Master/index.php')
-    #portScan.portSettings('127.0.0.1', '80-500', True)
+    #portScan.portSettings('127.0.0.1', '80-500', True, 0.5, 20)
     #print(utilities.readWordlist('smallAdmin.txt')[1][0])
     #sqlScan.startSQL('http://testphp.vulnweb.com/artists.php')
     #sqlScan.startSQL('http://127.0.0.1/DVWA-Master/vulnerabilities/sqli')

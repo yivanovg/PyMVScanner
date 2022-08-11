@@ -8,7 +8,7 @@ from datetime import datetime
 def getLogger():
 
     #check code for reuse
-    
+    #mention checking online for solution
     loggerCustom = logging.getLogger('PYVMScanner')
     
     if not loggerCustom.handlers:

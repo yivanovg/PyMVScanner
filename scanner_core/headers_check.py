@@ -1,6 +1,7 @@
 """Class for checking the security headers of a website"""
 """City Unviersity Project"""
 #imports
+from datetime import datetime
 from ssl import CertificateError
 from urllib import response
 import requests
@@ -41,43 +42,50 @@ def check_ssl(url):
     
     myLogger.info('Starting SSL Check!\n')
     
-    retry_without = False
+    retry_without = True
     
     #try to connect to the website and check for ssl error
     try:      
         get(url)
         print('SSL Supported: Cerificate Valid\n')
+        fliesave_list.append('SSL Supported: Cerificate Valid\n')
         
     #if error return outcome
     except requests.exceptions.SSLError as e :
-        
+        retry_without = False
         print('SSL Supported : Certificate Invalid\n')
+        fliesave_list.append('SSL Supported : Certificate Invalid\n')
         
+        #print('Try again\n')
+        #exit()
     except Exception as e:
-        retry_without = True
+        retry_without = False
         print(e)
     
     #if any other exception happens try connecting without verifying certificate and return outcome
-    if retry_without:
+    if not retry_without:
         try:
             
             get(url, verify=False)
             print('SSL Supported : Certificate Invalid\n')
+            fliesave_list.append('SSL Supported : Certificate Invalid\n')
             
         except:
             
             print('SLL Not Supported: Certificate Invalid\n')
-        
-        return
+            fliesave_list.append('SLL Not Supported: Certificate Invalid\n')
+            
+        return retry_without
     myLogger.info('SSL Check Finished!\n')
 
     
 #main function for checking the SSL redirect
-def check_redirect(url):
+def check_redirect(url, retry_check):
 
+    
     myLogger.info('Starting Redirect Check!\n')
     #var init
-    https_redirect =  get(url)
+    https_redirect =  get(url, verify=retry_check)
     redirect_info = {}
     outcome = True
     
@@ -97,8 +105,13 @@ def check_redirect(url):
         redirect_info['start_code'] = https_redirect.status_code 
         
         redirect_info['end_url'] = ''
-        redirect_info['end_code'] = ''    
+        redirect_info['end_code'] = ''   
         
+    print('Redirect Info: ', redirect_info)
+    temp = 'Redirect Info: ', redirect_info, '\n'
+    fliesave_list.append(temp)
+    print('\n') 
+    
     #verify is https is present at the redirection url and return the result
     if 'https' in redirect_info['end_url']:
         outcome = True
@@ -113,6 +126,7 @@ def check_redirect(url):
 #main function for checking the security headers
 def check_headers(url, httpsOn):
     
+    global fliesave_list
     myLogger.info('Starting Secure Headers Check!\n')
     
     #verify set to False if connection to a website with no HTTPS example: localhost:3030
@@ -129,24 +143,32 @@ def check_headers(url, httpsOn):
     for header in security_headers:
         
         if header in target.headers:
+            
             clean[header] = 'Not Vulnerable'
             print('Not Vulnerable Security-Header:', header,' Option Set: ', target.headers[header], '\n')
+            tempstr = 'Not Vulnerable Security-Header:', header,' Option Set: ', target.headers[header], '\n'
+            fliesave_list.append(tempstr)
             
         else:
             
             vulnerable[header] = 'Vulnerable'
+            tempstr1 = 'Vulnerable Security-Header: ', header,'\n'
+            fliesave_list.append(tempstr1)
+            
             print('Vulnerable Security-Header: ', header,'\n')
             
     myLogger.info('Finished Secure Headers Check!')
     
 #function for checking the cookies for HttpOnly and secure flag setting
-def cookie_check(url):
-
+def cookie_check(url,retry_check):
+    
+    global fliesave_list
     myLogger.info('Starting Cookie Secure Flags Check!\n')
     
     #var init
+    print(retry_check)
     conn = DVWALogin.loginDVWA()
-    respone  = conn.get(url)
+    respone  = conn.get(url, verify=retry_check)
     cookie = respone.cookies
    
     secureC = True
@@ -173,30 +195,66 @@ def cookie_check(url):
            
     #print scan results
     if secureC == True:
+        
         print('Cookie Secure Enabled\n')
+        fliesave_list.append('Cookie Secure Enabled\n')
+        
     else:
+        
         print('Cookie Secure Disabled\n')
+        fliesave_list.append('Cookie Secure Disabled\n')
+        
     if secureH == True:
-        print('Cookie Httponly enbaled\n')
+        
+        print('Cookie Httponly Enbaled\n')
+        fliesave_list.append('Cookie Httponly Enbaled\n')
+        
     else:
+        
         print('Cookie Httponly Disabled\n')
+        fliesave_list.append('Cookie Httponly Disabled\n')
+        
     if secureD == True:
-        print('Loosly defined Domain: false\n')
+        
+        print('Loosly defined Domain: False\n')
+        fliesave_list.append('Loosly defined Domain: False\n')
+        
     else:
-        print('Loosly Defined Domain: true\n')
+        
+        print('Loosly Defined Domain: True\n')
+        fliesave_list.append('Loosly Defined Domain: True\n')
     
     myLogger.info('Completed Cookie Secure Flags Check!')
+    
+def saveFile(filesave):
+    try:   
+        
+        #open and save to the txt file the formatted output
+        with open('scanner_core\\data\\headercheckScan.txt', 'a') as file:
+                    dateTimeObj = datetime.now()
+                    formatted = str(filesave).replace('\\n', '\n')
+                    file.write('\n'+str(dateTimeObj.strftime("%d-%b-%Y (%H:%M:%S)")))
+                    
+                    file.writelines('\n' + formatted)
+                    file.write('\n')
+    
+    except OSError:
+                myLogger.info('Could not open/read file!!!')
+    return
 
 #entry function for cli
-def startHeaderCheck(url, fsave):
+def startHeaderCheck(url, fsave=False):
     
     if 'http' not in url:
         myLogger.info('Please add HTTP OR HTTPS to URL')
         exit()
-        
-    cookie_check(url)
+         
+    retry_check = check_ssl(url)
     
-    check_ssl(url)
+    cookie_check(url, retry_check)
     
-    check_headers(url,check_redirect(url))
+    check_headers(url,check_redirect(url, retry_check))
+    
+    if fsave == True:
+        saveFile(fliesave_list)
     
