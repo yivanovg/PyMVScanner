@@ -11,7 +11,7 @@ from requests import RequestException, Session, get, request
 myLogger = logger.getLogger()
 myLogger.setLevel(logging.DEBUG)
 
-#random user-agents so out connection does not get blocked source github
+#random user-agents so out connection does not get blocked
 USER_AGENTS_OPTIONS = {'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
     'User-Agent' : 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36',
     'User-Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36',
@@ -88,33 +88,33 @@ def dirBust(wordlist, url, redirect, fsave):
     for i in range(len(wordlist)):
         try:
             
-            site_url_formattted = 'http://' + url + '/' + wordlist[i][0] 
+            site_url_formatted = 'http://' + url + '/' + wordlist[i][0] 
            
             try:
                 
-                url_request_info = get(site_url_formattted, headers=user_agent_choices)
+                url_request_info = get(site_url_formatted, headers=user_agent_choices)
                 
                 if no_redirect is False:
                     
-                    url_request_info = get(site_url_formattted, headers=user_agent_choices, allow_redirects=False)
+                    url_request_info = get(site_url_formatted, headers=user_agent_choices, allow_redirects=False)
                     
                 #responses deciding the if url is valid
                 if url_request_info.status_code == 200:
                     
-                    valid_urls.append(site_url_formattted)
-                    print(f'Possible Vulnerable Website Location: {site_url_formattted}\nCode {url_request_info.status_code} Request OK!\n')
+                    valid_urls.append(site_url_formatted)
+                    print(f'Possible Vulnerable Website Location: {site_url_formatted}\nCode {url_request_info.status_code} Request OK!\n')
                     
                     #saveFile(f'Possible Vulnerable Website Location: {site_url}\nCode {url_request.status_code} Request OK!\n')
                 
                 if url_request_info.status_code == 403:
                     
                     error403 += 1
-                    #print(f'Possible Vulnerable Website Location: {site_url}\nCode {url_request.status_code} Request Forbidden!\n')
+                    print(f'Possible Vulnerable Website Location: {site_url_formatted}\nCode {url_request_info.status_code} Request Forbidden!\n')
                 
                 if url_request_info.status_code == 401:
                     
                     error401 += 1
-                    #print(f'Possible Vulnerable Website Location: {site_url}\nCode {url_request.status_code} Authenticaiton Required!\n')
+                    print(f'Possible Vulnerable Website Location: {site_url_formatted}\nCode {url_request_info.status_code} Authenticaiton Required!\n')
                 
                 else:
                     

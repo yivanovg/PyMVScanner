@@ -118,8 +118,9 @@ def readWordlist(wordlist):
                 myLogger.info('Could not open/read file!!!') 
                 exit(e)
                 
+#based on https://stackoverflow.com/questions/26468640/python-function-to-test-ping
 #check if the host is online  
-def checkHostOnlien(url):
+def checkHostOnline(url):
     
     myLogger.info('Starting Host Ping!')
     #ip verificaiton
@@ -140,6 +141,8 @@ def checkHostOnlien(url):
         
         myLogger.warning('OS Error Try Again !') 
        
-    myLogger.info('Finished Host Ping Success!') 
+        myLogger.info('Finished Host Ping Success!') 
     
-    return online
+    except:
+    
+        return online

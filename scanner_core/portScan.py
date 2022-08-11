@@ -5,7 +5,7 @@ from datetime import datetime
 from ipaddress import IPv4Network
 import os
 from socket import *
-from scapy.layers.inet import IP, TCP, ICMP
+from scapy.layers.inet import IP, TCP, ICMP, UDP
 from scapy.all import sr1, RandShort, sr
 import requests
 from threading import Thread, Lock
@@ -104,11 +104,13 @@ def run_multi_scan(threads, ports):
     #start threading with the number of specified threads
     try:
         
-        for thread in range(threads):
+        for threadNumb in range(threads):
 
-            thread = Thread(target=multiThread)
-            thread.daemon = True
-            thread.start()
+            threadNumb = Thread(target=multiThread)
+            
+            threadNumb.daemon = True
+            
+            threadNumb.start()
 
         for process in ports:
             
@@ -131,51 +133,145 @@ def run_multi_scan(threads, ports):
         
         myLogger.info('No Ports Open')
 
-    
+#Scanner code based on https://resources.infosecinstitute.com/topic/port-scanning-using-scapy/ 
 #stealthy tcp scan explained in documenatation
 def stealthTCPScan(url, portPass):
     
     #var init
-    dst_ip = url
-    src_port = RandShort()
+    dest = url
+    source_port = RandShort()
     ports= portPass
-
-    #loop through the port range
-    for dst_port in ports:
-        
-        stealth_scan_resp = sr1(IP(dst=dst_ip)/TCP(sport=src_port,dport=dst_port,flags='S'),timeout=3)
-        
-        #checking the repsonse code and determenig the port status
-        if str(type(stealth_scan_resp)) == "<class 'NoneType'>":
+    try:
+        #loop through the port range
+        for dst_port in ports:
             
-                print('Filtered port:', dst_port,'\n')
-                temps= 'Filtered port: ', dst_port
-                fileList.append(temps)
-                
-        elif stealth_scan_resp.haslayer(TCP):
+            tcp_stealth = sr1(IP(dst=dest)/TCP(sport=source_port,dport=dst_port,flags='S'),timeout=3)
             
-            if stealth_scan_resp.getlayer(TCP).flags == 0x12:
+            #checking the repsonse code and determenig the port status
+            if str(type(tcp_stealth)) == "<class 'NoneType'>":
                 
-                send_rst = sr(IP(dst=dst_ip)/TCP(sport=src_port,dport=dst_port,flags='R'), timeout=3)
+                    print('Filtered port:', dst_port,'\n')
+                    temps= 'Filtered port: ', dst_port
+                    fileList.append(temps)
+                    
+            elif tcp_stealth.haslayer(TCP):
                 
-                print('Open port: ', dst_port,'\n')
-                temps1= 'Open port: ', dst_port
+                if tcp_stealth.getlayer(TCP).flags == 0x12:
+                    
+                    send_rst = sr(IP(dst=dest)/TCP(sport=source_port,dport=dst_port,flags='R'), timeout=3)
+                    
+                    print('Open port: ', dst_port,'\n')
+                    temps1= 'Open port: ', dst_port
+                    fileList.append(temps1)
+                    
+            elif tcp_stealth.getlayer(TCP).flags == 0x14:
+                
+                    print('Closed port: ', dst_port,'\n')
+                    temps2= 'Closed port: ', dst_port
+                    fileList.append(temps2)
+                    
+            elif tcp_stealth.haslayer(ICMP):
+                
+                if(int(tcp_stealth.getlayer(ICMP).type)==3 and int(tcp_stealth.getlayer(ICMP).code) in [1,2,3,9,10,13]):
+                
+                    print('Filtered port: ', dst_port, '\n')
+                    temps3= 'Filtered port: ', dst_port
+                    fileList.append(temps3)
+    except Exception as e:
+        exit(e)
+        
+def udpScan(url, portPass):
+    
+    #var init
+    dest = url
+    source_port = RandShort()
+    ports= portPass
+    try:
+        #loop through the port range
+        for dst_port in ports:
+            
+            udp = sr1(IP(dst=dest)/TCP(sport=source_port,dport=dst_port,flags='S'),timeout=5)
+            
+            if (str(type(udp))=="<class 'NoneType'>"):
+                retry = []
+                for count in range(0,3):
+                    
+                    retry.append(sr1(IP(dst=dest)/UDP(dport=dst_port),timeout=5))
+                    
+                for item in retry:
+                    
+                    if (str(type(item))!="<type 'NoneType'>"):
+                        
+                        udp(dest,dst_port,timeout=5)
+                        print('Open|Filetered port: ', dst_port, '\n')
+                        
+                        temps2= 'Open|Filtered port: ', dst_port, '\n'
+                        fileList.append(temps2)
+                        
+                return "Open|Filtered"
+            
+            elif (udp.haslayer(UDP)):
+                
+                print('Open port: ', dst_port, '\n')
+                temps1= 'Open port: ', dst_port, '\n'
                 fileList.append(temps1)
                 
-        elif stealth_scan_resp.getlayer(TCP).flags == 0x14:
+                return "Open"
             
-                print('Closed port: ', dst_port,'\n')
-                temps2= 'Closed port: ', dst_port
-                fileList.append(temps2)
+            elif(udp.haslayer(ICMP)):
                 
-        elif stealth_scan_resp.haslayer(ICMP):
+                if(int(udp.getlayer(ICMP).type)==3 and int(udp.getlayer(ICMP).code)==3):
+                    
+                    print('Closed port: ', dst_port, '\n')
+                    return "Closed"
+                
+                elif(int(udp.getlayer(ICMP).type)==3 and int(udp.getlayer(ICMP).code) in [1,2,9,10,13]):
+                    
+                    print('Filtered port: ', dst_port, '\n')
+                    return "Filtered"
+            else:
+                return 'Unknown'
+    except Exception as e:
+        exit(e) 
+        
+def finScan(url, portPass):
+    
+    #var init
+    dest = url
+    ports= portPass
+    
+    try:
+        #loop through the port range
+        for dst_port in ports:
+            fin = sr1(IP(dst=dest)/TCP(dport=dst_port,flags="F"),timeout=5)
             
-            if(int(stealth_scan_resp.getlayer(ICMP).type)==3 and int(stealth_scan_resp.getlayer(ICMP).code) in [1,2,3,9,10,13]):
+            if (str(type(fin))== "<class 'NoneType'>"):
+                
+                print('Open|Filtered port: ', dst_port, '\n')
+                temps2= 'Open|Filtered port: ', dst_port, '\n'
+                
+                fileList.append(temps2)
+                return "Open|Filtered"
             
-                print('Filtered port: ', dst_port, '\n')
-                temps3= 'Filtered port: ', dst_port
-                fileList.append(temps3)
-              
+            elif(fin.haslayer(TCP)):
+                if(fin.getlayer(TCP).flags == 0x14):
+                    
+                    print('Closed port: ', dst_port, '\n')
+                    return "Closed"
+                
+            elif(fin.haslayer(ICMP)):
+                
+                if(int(fin.getlayer(ICMP).type)==3 and int(fin.getlayer(ICMP).code) in [1,2,3,9,10,13]):
+                    
+                    print('Filtered: ', dst_port, '\n')
+                    return "Filtered"
+                
+            else:
+                return "Unknown"
+            
+    except Exception as e:
+        exit(e)    
+        
 #function for saving a file
 def saveFile():
     
@@ -238,7 +334,8 @@ def portSettings(url, portRanges, filesavePass=False, timeout_pass=0.5, threads=
     #split port ranges
     if '-' in portRanges:
         portStart, portEnd = portRanges.split("-")
-        portStart, portEnd = int(portStart), int(portEnd)
+        portStart = int(portStart)
+        portEnd = int(portEnd)
         
         if portStart >= 0 and portStart <=65536 and portEnd >=1 and portEnd <= 65536:
 
@@ -265,7 +362,16 @@ def portSettings(url, portRanges, filesavePass=False, timeout_pass=0.5, threads=
     if scan == 'TCP':
      run_multi_scan(threads,portsL) 
       
-    elif scan == 'TCP STEALTH':
+    elif scan == 'TCPSTEALTH':
         stealthTCPScan(url,portsL)
-        if filesave == True:
+        
+    elif scan == 'UDP':
+        
+        print(udpScan(url, portsL))
+        
+    elif scan == 'FIN':
+        print(finScan(url,portsL))
+            
+    if filesave == True:
             saveFile()
+    

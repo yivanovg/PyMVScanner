@@ -11,8 +11,10 @@ from urllib.parse import urlparse, urljoin
 from bs4 import BeautifulSoup as bs
 import warnings
 
-warnings.filterwarnings(action='ignore', category=UserWarning, module='bs4')
 
+#crawler code based on https://www.thepythoncode.com/article/extract-all-website-links-python
+warnings.filterwarnings(action='ignore', category=UserWarning, module='bs4')
+ 
 #initialise logger
 myLogger = logger.getLogger()
 myLogger.setLevel(logging.DEBUG)
@@ -157,9 +159,9 @@ def find_forms(url):
  
     form_data = bs(result.content, 'html.parser')
     form = form_data.find('form')
+    
     if form is not None:
-        """Returns the HTML details of a form,
-        including action, method and list of form controls (inputs, etc)  """
+        
         details = {}
         # get the form action (requested URL)
         action = form.attrs.get("action").lower()

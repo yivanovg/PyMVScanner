@@ -10,6 +10,7 @@ OKCYAN = '\033[96m'
 OKGREEN = '\033[92m'
 WARNING = '\033[93m'
 
+#banner created from https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
 banner = """ 
 
  ██▓███ ▓██   ██▓ ██▒   █▓ ███▄ ▄███▓  ██████  ▄████▄   ▄▄▄       ███▄    █  ███▄    █ ▓█████  ██▀███  

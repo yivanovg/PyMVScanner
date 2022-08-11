@@ -10,7 +10,7 @@ def loginDVWA():
     sess = Session()
     sess.headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36"
 
-    login_payload = { 
+    payload_Login = { 
         "username": "admin",
         "password": "password",
         "Login": "Login",
@@ -21,10 +21,13 @@ def loginDVWA():
 
     # # login
     r = sess.get(login_url)
-    token = re.search("user_token'\s*value='(.*?)'", r.text).group(1)
-    login_payload['user_token'] = token
     
-    sess.post(login_url, data=login_payload)
+    #source https://stackoverflow.com/questions/51381302/python-request-logging-in-to-dvwa
+    token = re.search("user_token'\s*value='(.*?)'", r.text).group(1)
+    
+    payload_Login['user_token'] = token
+    
+    sess.post(login_url, data=payload_Login)
       
     #r = sess.get('http://127.0.0.1/DVWA-Master/robots.txt')
     

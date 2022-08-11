@@ -85,35 +85,43 @@ def check_redirect(url, retry_check):
     
     myLogger.info('Starting Redirect Check!\n')
     #var init
-    https_redirect =  get(url, verify=retry_check)
-    redirect_info = {}
+    https_redirect_try =  get(url, verify=retry_check)
+    temp_redirect_info = {}
     outcome = True
     
     #add the header data to the dictionary
-    if https_redirect.history:
+    if https_redirect_try.history:
         
-        for dest in https_redirect.history:
-            redirect_info['start_url'] = dest.url
-            redirect_info['start_code'] = dest.status_code
+        for destURL in https_redirect_try.history:
             
-        redirect_info['end_url'] = https_redirect.url
-        redirect_info['end_code'] = https_redirect.status_code        
+            temp_redirect_info['start_url_http'] = destURL.url
+            
+            temp_redirect_info['start_code_http'] = destURL.status_code
+            
+        temp_redirect_info['end_url_https'] = https_redirect_try.url
+        
+        temp_redirect_info['end_code_https'] = https_redirect_try.status_code        
         
     else:
         
-        redirect_info['start_url'] = https_redirect.url
-        redirect_info['start_code'] = https_redirect.status_code 
+        temp_redirect_info['start_url_http'] = https_redirect_try.url
         
-        redirect_info['end_url'] = ''
-        redirect_info['end_code'] = ''   
+        temp_redirect_info['start_code_http'] = https_redirect_try.status_code 
         
-    print('Redirect Info: ', redirect_info)
-    temp = 'Redirect Info: ', redirect_info, '\n'
+        temp_redirect_info['end_url_https'] = ''
+        
+        temp_redirect_info['end_code_https'] = ''   
+        
+        
+    print('Redirect Info: ', temp_redirect_info)
+    temp = 'Redirect Info: ', temp_redirect_info, '\n'
+    
     fliesave_list.append(temp)
+    
     print('\n') 
     
     #verify is https is present at the redirection url and return the result
-    if 'https' in redirect_info['end_url']:
+    if 'https' in temp_redirect_info['end_url']:
         outcome = True
         
     else:
@@ -146,19 +154,23 @@ def check_headers(url, httpsOn):
             
             clean[header] = 'Not Vulnerable'
             print('Not Vulnerable Security-Header:', header,' Option Set: ', target.headers[header], '\n')
+            
             tempstr = 'Not Vulnerable Security-Header:', header,' Option Set: ', target.headers[header], '\n'
             fliesave_list.append(tempstr)
             
         else:
             
             vulnerable[header] = 'Vulnerable'
+            
             tempstr1 = 'Vulnerable Security-Header: ', header,'\n'
+            
             fliesave_list.append(tempstr1)
             
             print('Vulnerable Security-Header: ', header,'\n')
             
     myLogger.info('Finished Secure Headers Check!')
     
+#some code is based on https://subscription.packtpub.com/book/networking-and-servers/9781784392932/5/ch05lvl1sec49/testing-for-insecure-cookie-flags
 #function for checking the cookies for HttpOnly and secure flag setting
 def cookie_check(url,retry_check):
     

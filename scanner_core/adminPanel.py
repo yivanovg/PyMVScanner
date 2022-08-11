@@ -100,29 +100,29 @@ def checkAdmin(url, redirect, fsave, wordlist):
     for i in range(len(wordlist)):
         try:
             
-            site_url_formattted = 'http://' + url + '/' + wordlist[i][0] 
+            site_url_formatted = 'http://' + url + '/' + wordlist[i][0] 
            
             try:
                 
-                url_request_info = get(site_url_formattted, headers=user_agent_choices)
+                url_request_info = get(site_url_formatted, headers=user_agent_choices)
                 
                 if no_redirect is False:
                     
-                    url_request_info = get(site_url_formattted, headers=user_agent_choices, allow_redirects=False)
+                    url_request_info = get(site_url_formatted, headers=user_agent_choices, allow_redirects=False)
                 
                 #responses deciding the if url is valid
                 if url_request_info.status_code == 200:
                     
-                    valid_urls.append(f'Possible Vulnerable Admin URL: {site_url_formattted} : Code {url_request_info.status_code} Request OK!\n')
-                    print(f'Possible Vulnerable Admin URL: {site_url_formattted}\nCode {url_request_info.status_code} Request OK!\n')
+                    valid_urls.append(f'Possible Vulnerable Admin URL: {site_url_formatted} : Code {url_request_info.status_code} Request OK!\n')
+                    print(f'Possible Vulnerable Admin URL: {site_url_formatted}\nCode {url_request_info.status_code} Request OK!\n')
                     
                 if url_request_info.status_code == 403:
                     
-                    #print(f'Possible Vulnerable Admin URL: {site_url}\nCode {url_request.status_code} Request Forbidden!\n')
+                    print(f'Possible Vulnerable Admin URL: {site_url_formatted}\nCode {site_url_formatted.status_code} Request Forbidden!\n')
                     error403 += 1
                     
                 if url_request_info.status_code == 401:
-                    #print(f'Possible Vulnerable Admin URL: {site_url}\nCode {url_request.status_code} Authenticaiton Required!\n')
+                    print(f'Possible Vulnerable Admin URL: {site_url_formatted}\nCode {site_url_formatted.status_code} Authenticaiton Required!\n')
                     error401 +=1
                 else:
                     continue
@@ -150,14 +150,14 @@ def checkRobots(url):
     url = url
     myLogger.info('Checking for access to robots.txt file!')
     
-    robots_Url = 'http://' + url + '/robots.txt'
+    urlRobot = 'http://' + url + '/robots.txt'
     
     global robots_final
     
     #try get the robots txt if not raise warning
     try:
         
-        respone = sess.get(robots_Url, allow_redirects=True)
+        respone = sess.get(urlRobot, allow_redirects=True)
         
         urls_robot = respone.text.split('\n')
 

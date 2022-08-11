@@ -9,6 +9,7 @@ from scanner_core import logger, crawlerURLs, DVWALogin
 import logging
 from scanner_cli import cliParser
 
+#some of the code is based on https://www.thepythoncode.com/article/sql-injection-vulnerability-detector-in-python
 #Load custom formatted logger class
 myLogger = logger.getLogger()
 myLogger.setLevel(logging.DEBUG)
@@ -300,46 +301,47 @@ def scan_sql(url, fsave, onlyLink=False):
             payload = {}
             
             #create the payload for the input fields
-            
-            for input in forms['inputs']:
-                if input["type"] == "hidden" or input["value"]:
-                        # any input form that is hidden or has some value,
-                        # just use it in the form body
-                        try:
-                            payload[input["name"]] = input["value"]
-                            #print(payload)
-                        except:
-                            pass
-                        
-                elif input["type"] != "submit":
-                        # all others except submit, use some junk data with special character
-                        payload[input["name"]] = f"{stringSQL}"
+            if forms is not None:
+                for input in forms['inputs']:
+                    if input["type"] == "hidden" or input["value"]:
+                            # any input form that is hidden or has some value,
+                            # just use it in the form body
+                            try:
+                                payload[input["name"]] = input["value"]
+                                #print(payload)
+                            except:
+                                pass
+                            
+                    elif input["type"] != "submit":
+                            # all others except submit, use some junk data with special character
+                            payload[input["name"]] = f"{stringSQL}"
                         
             #join the url with the action (form request URL)
-            url = urljoin(url, forms["action"])
+                url = urljoin(url, forms["action"])
             
             #setup the connection and payload data to be sent to the server
-            conn = DVWALogin.loginDVWA()
-            
-            conn.headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36"
-            
-            if forms["method"] == "post":
-                    res = conn.post(url, data=payload)
-                    
-            elif forms["method"] == "get":
-                    res = conn.get(url, params=payload)
-            
-            #for each response of each payload check if it is vulnerable and output the result
-            if sql_vulnerable(res, payload):
+                conn = DVWALogin.loginDVWA()
                 
-                    print("[+] SQL Injection vulnerability detected, link:", url)
-                    print(f"[+] Form: {forms}")
-                    text_errors.append(f'Form: {forms}')
-                    conn.close()
-                    break     
+                conn.headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36"
+                
+                if forms["method"] == "post":
+                        res = conn.post(url, data=payload)
+                        
+                elif forms["method"] == "get":
+                        res = conn.get(url, params=payload)
+                
+                #for each response of each payload check if it is vulnerable and output the result
+                if sql_vulnerable(res, payload):
                     
-        conn.close()
-    
+                        print("[+] SQL Injection vulnerability detected, link:", url)
+                        print(f"[+] Form: {forms}")
+                        text_errors.append(f'Form: {forms}')
+                        conn.close()
+                        break     
+                    
+                conn.close()
+            else:
+                print('No Forms Found!')
     #save file if filesave is true
     if fsave == True:
         try:   
