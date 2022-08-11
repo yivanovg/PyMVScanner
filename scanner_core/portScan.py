@@ -177,8 +177,11 @@ def stealthTCPScan(url, portPass):
                     print('Filtered port: ', dst_port, '\n')
                     temps3= 'Filtered port: ', dst_port
                     fileList.append(temps3)
+    except KeyboardInterrupt:
+        exit()
     except Exception as e:
         exit(e)
+   
         
 def udpScan(url, portPass):
     
@@ -233,7 +236,8 @@ def udpScan(url, portPass):
                 return 'Unknown'
     except Exception as e:
         exit(e) 
-        
+    except KeyboardInterrupt:
+        exit()
 def finScan(url, portPass):
     
     #var init
@@ -270,7 +274,9 @@ def finScan(url, portPass):
                 return "Unknown"
             
     except Exception as e:
-        exit(e)    
+        exit(e)
+    except KeyboardInterrupt:
+        exit()    
         
 #function for saving a file
 def saveFile():

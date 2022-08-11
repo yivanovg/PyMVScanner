@@ -118,11 +118,11 @@ def checkAdmin(url, redirect, fsave, wordlist):
                     
                 if url_request_info.status_code == 403:
                     
-                    print(f'Possible Vulnerable Admin URL: {site_url_formatted}\nCode {site_url_formatted.status_code} Request Forbidden!\n')
+                    print(f'Possible Vulnerable Admin URL: {site_url_formatted}\nCode {url_request_info.status_code} Request Forbidden!\n')
                     error403 += 1
                     
                 if url_request_info.status_code == 401:
-                    print(f'Possible Vulnerable Admin URL: {site_url_formatted}\nCode {site_url_formatted.status_code} Authenticaiton Required!\n')
+                    print(f'Possible Vulnerable Admin URL: {site_url_formatted}\nCode {url_request_info.status_code} Authenticaiton Required!\n')
                     error401 +=1
                 else:
                     continue

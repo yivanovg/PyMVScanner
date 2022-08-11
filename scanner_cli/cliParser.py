@@ -34,7 +34,7 @@ THE INDIVUDAL USING THE SOFTWARE IS RESPONSIBLE ANYTHING MALICIOUS USAGE.
               metavar='URL')
 
 @click.option('--ip',
-              help='When using this option plese input an ip address in the format specified: [127.162.221.242]',
+              help='When using this option plese input an ip address in the format specified: [127.162.221.242]',type=str,
               metavar='IP',default=None)
 
 @click.option('--lookup', default='ipwhois', help='Choose the ports that you need to scan. USAGE: pyvs --url http://google.com --ports 80 or multiple ports --ports 443, 22, 21', 
@@ -50,14 +50,17 @@ def targetScan(url, ip, lookup,ftype):
     Use this command to carry out whois ipwhois scan
     """
     #check if host is online if not exit and try again
-    if utilities.checkHostOnline(url) == False:
-        exit()
+   
     if ip is not None and lookup is not None and ftype is not None:
+         if utilities.checkHostOnline(ip) != False:
             hostInfoLookup.chooseScan(lookup,ftype, ip, '')
-
+         exit()
+         
     if url is not None and lookup is not None and ftype is not None:
-            hostInfoLookup.chooseScan(lookup,ftype,'',url)
+        if utilities.checkHostOnline(url) != False:
             
+            hostInfoLookup.chooseScan(lookup,ftype,'',url)
+        exit()
     
 
 #command which is used to specify the target scan settings

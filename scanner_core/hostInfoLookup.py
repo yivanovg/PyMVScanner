@@ -153,7 +153,7 @@ def ipwhoisLookup(ip):
         host = IPWhois(ip)
 
         details = host.lookup_whois()
-
+        return details
     except ipwhois.exceptions.BaseIpwhoisException:
 
         myLogger.warning('Scan failed please try again !')

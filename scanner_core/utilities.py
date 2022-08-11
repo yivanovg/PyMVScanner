@@ -144,5 +144,4 @@ def checkHostOnline(url):
         myLogger.info('Finished Host Ping Success!') 
     
     except:
-    
-        return online
+        exit()

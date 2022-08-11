@@ -121,7 +121,7 @@ def check_redirect(url, retry_check):
     print('\n') 
     
     #verify is https is present at the redirection url and return the result
-    if 'https' in temp_redirect_info['end_url']:
+    if 'https' in temp_redirect_info['end_url_https']:
         outcome = True
         
     else:
